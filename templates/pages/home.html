@@ -4,8 +4,19 @@
 {% block title %}Home page{% endblock title %}
 
 {% block content %}
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-  <img src="{% static 'images/logo.png' %}" class="img-fluid" alt="DjangoX logo"/>
-  <p class="lead">A Django starter project with batteries.</p>
-</div>
-{% endblock content %}
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <img src="{% static 'images/snacks.jpeg' %}" class="img-fluid" alt="snacks"/>
+    <p class="lead">A place for everyone to share their favorite snacks!</p>
+  </div>
+  <h1>The People's List of Snacks</h1>
+    <a href="{% url 'create_view' %}">+ New Snack</a>
+    <ul>
+        <h1 class="text3l text-green-700">Snack List</h1>
+        {% for snack in snacks %}
+          <li>
+              <a class="text-red-400" href="{% url 'detail_view' snack.pk %}">{{ snack.title }}</a>
+          </li>
+      {% endfor %}
+    </ul>
+
+    {% endblock content %}
